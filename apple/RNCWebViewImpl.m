@@ -95,7 +95,10 @@ NSString *const CUSTOM_SELECTOR = @"_CUSTOM_SELECTOR_";
 }
 - (void)buildMenuWithBuilder:(id<UIMenuBuilder>)builder API_AVAILABLE(ios(13.0))  {
     if (@available(iOS 16.0, *)) {
-      if(self.menuItems){
+      if (self.menuItems){
+        if (@available(iOS 17.0, *)) {
+          [builder removeMenuForIdentifier:UIMenuAutoFill];
+        }
         [builder removeMenuForIdentifier:UIMenuLookup];
       }
     }
